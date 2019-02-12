@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace Task1
 {
@@ -10,26 +11,25 @@ namespace Task1
     {
         static void Main(string[] args)
         {
-            string s = Console.ReadLine();
-            int a = 1;
-            int b = s.Length;
-            for (int i = 0; i < s.Length; i++)
+            StreamReader sr = new StreamReader("input.txt");
+            string s = sr.ReadToEnd();
+            char[] ch = s.ToArray();
+            Array.Reverse(ch);
+            string reverse = String.Empty;
+            for (int i = 0; i < ch.Length; i++)
             {
-                if (s[i] != s[b - i - 1])
-                {
-                    a++;
-                }
-
+                reverse += ch[i];
             }
-            if (a == 1)
+            if (s != reverse)
             {
-                Console.WriteLine("Yes");
+                Console.WriteLine("No");
+
             }
             else
             {
-                Console.WriteLine("No");
-            }
+                Console.WriteLine("Yes");
 
+            }
             Console.ReadKey();
         }
     }
